@@ -1,0 +1,24 @@
+.topBar{
+    padding: 1rem;
+    border-bottom: 2px solid #dee1e6;
+}
+
+.logo{
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: var(--color-main);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1rem;
+}
