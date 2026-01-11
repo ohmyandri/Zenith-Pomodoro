@@ -1,0 +1,46 @@
+#startBtn{
+    border: none;
+    padding:12px;
+    width: 278px;
+
+    background-color: var(--color-main);
+    border-radius: 30px;
+    cursor: pointer;
+
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+#startBtn:hover{
+    opacity: 0.7;
+}
+
+#startBtn:active{
+    transform: scale(0.90);
+}
+
+.actionsButton button{
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    width: 62px;
+
+    background-color: white;
+    border-radius: 30px;
+    cursor: pointer;
+
+    color: black;
+    transition: all 0.3s ease-in;
+}
+
+.actionsButton button:hover{
+    opacity: 0.7;
+}
+
+.actionsButton button:active{
+    transform: scale(0.90);
+    background-color: var(--color-main);
+    color: black;
+    transition: all 0.3s ease-in;
+}
