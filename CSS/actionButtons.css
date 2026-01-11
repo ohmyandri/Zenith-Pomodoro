@@ -42,5 +42,5 @@
     transform: scale(0.90);
     background-color: var(--color-main);
     color: black;
-    transition: all 0.3s ease-in;
+    transition: all 0.01s ease-in;
 }
