@@ -1,5 +1,6 @@
 @import "./topbar.css";
 @import "./mainContent.css";
+@import "./toggleButton.css";
 
 :root{
     --color-main: #6AB2FB;
