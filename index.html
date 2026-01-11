@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style.css">
     <title>Zenith Pomodoro</title>
 </head>
 <body>
@@ -26,16 +26,17 @@
     <section class="mainContent">
         <!-- Slider Section -->
         <div class="sliders">
+            <!-- Toggler Button -->
             <input type="checkbox" id="pomodoroToggle">
+            <!-- Labels -->
+            <label for="pomodoroToggle" class="sliderRail"></label>
         </div>
         
         <!-- Timer Section -->
-        <div class="timer">
-            0:00
-        </div>
+        <div class="timer" id="timerDisplay"></div>
         
         <!-- Start Button -->
-        <button type="button">Start</button>
+        <button type="button" id="startBtn">START</button>
         
         <!-- Actions (pause, restart) -->
         <div class="actionsButton">
@@ -48,6 +49,7 @@
             </button>
          </div>
      </section>
-    
+
+     <script type="module" src="JS/main.js"></script>
 </body>
 </html>

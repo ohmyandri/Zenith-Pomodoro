@@ -1,0 +1,25 @@
+@import "./topbar.css";
+@import "./mainContent.css";
+@import "./toggleButton.css";
+@import "./timer.css";
+@import "./actionButtons.css";
+
+:root{
+    --color-main: #6AB2FB;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
