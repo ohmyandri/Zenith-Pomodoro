@@ -2,6 +2,7 @@
 @import "./mainContent.css";
 @import "./toggleButton.css";
 @import "./timer.css";
+@import "./actionButtons.css";
 
 :root{
     --color-main: #6AB2FB;
