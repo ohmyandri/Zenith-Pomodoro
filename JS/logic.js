@@ -11,6 +11,11 @@ let timeConfig = {
 };
 let total_time = ((timeConfig.h * 3600) + (timeConfig.m * 60) + timeConfig.s) * 1000;
 
+export function setTimeConfig(h, m, s){
+    total_time = ((h * 3600) + (m * 60) + s) * 1000;
+    resetTimer();
+}
+
 export function startTimer() {
     //First, we check if it is running
     if (!isRunning){
