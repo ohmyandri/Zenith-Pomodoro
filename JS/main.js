@@ -1,5 +1,4 @@
-import { displayTime } from './ui.js';
-import { startTimer, pauseTimer, resetTimer } from './logic.js';
+import {startTimer, pauseTimer, resetTimer, setTimeConfig} from './logic.js';
 
 const startBtn = document.getElementById('startBtn');
 const pauseBtn = document.getElementById('stopTimerBtn');
@@ -15,3 +14,28 @@ resetBtn.addEventListener('click', resetTimer);
 window.onload = () => {
     resetTimer();
 }
+
+const toggle = document.getElementById('pomodoroToggle');
+toggle.addEventListener('change', () => {
+    if(!toggle.checked){
+    let timeConfig = {
+        h: 0,
+        m: 25,
+        s: 0
+    }
+    setTimeConfig(timeConfig.h, timeConfig.m, timeConfig.s);
+
+    resetTimer();
+    }
+
+    else{
+    let timeConfig = {
+        h: 0,
+        m: 5,
+        s: 0
+    }
+
+        setTimeConfig(timeConfig.h, timeConfig.m, timeConfig.s);
+        resetTimer();
+    }
+});
