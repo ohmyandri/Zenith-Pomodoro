@@ -1,15 +1,24 @@
 import {displayTime} from "./ui.js";
+import {toggle} from './main.js';    
 
 let timer = 0;
 let startTime = 0;
 let elapsedTime = 0;
 let isRunning = false;
-let timeConfig = {
+
+let focusConfig = {
     h: 0,
     m: 25,
     s: 0
 };
-let total_time = ((timeConfig.h * 3600) + (timeConfig.m * 60) + timeConfig.s) * 1000;
+
+let restConfig = {
+    h: 0,
+    m: 5,
+    s: 0
+};
+
+let total_time = ((focusConfig.h * 3600) + (focusConfig.m * 60) + focusConfig.s) * 1000;
 
 export function setTimeConfig(h, m, s){
     total_time = ((h * 3600) + (m * 60) + s) * 1000;
@@ -29,11 +38,24 @@ export function updateTimer() {
     const currentTime = Date.now();
     elapsedTime = currentTime - startTime;
 
-    let time_left = total_time - elapsedTime;
+    if(elapsedTime >= total_time){
+        //We alert the user the focus-time has finished
+        alert("Time's done!")
+        //We send to the contrary page page:
+        const toggle = document.getElementById('pomodoroToggle');
+        toggle.checked = !toggle.checked;
+        //We set the correct toggler:
+        togglerStatus();
+        resetTimer();
+    }
 
-    let timeToDisplay = formatTime(time_left);
-
-    displayTime(timeToDisplay);
+    else{
+        let time_left = total_time - elapsedTime;
+    
+        let timeToDisplay = formatTime(time_left);
+    
+        displayTime(timeToDisplay);
+    }
 }
 
 export function pauseTimer(){
@@ -61,4 +83,17 @@ export function formatTime(ms) {
         m: String(minutes).padStart(2, '0'),
         s: String(seconds).padStart(2, '0')
     };
+}
+
+export function togglerStatus(){
+    if(!toggle.checked){
+        setTimeConfig(focusConfig.h, focusConfig.m, focusConfig.s);
+
+        resetTimer();
+    }
+
+    else{
+        setTimeConfig(restConfig.h, restConfig.m, restConfig.s);
+        resetTimer();
+    }
 }
