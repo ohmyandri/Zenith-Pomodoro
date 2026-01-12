@@ -1,6 +1,23 @@
 .topBar{
+    display: flex;
+    justify-content: space-between;
     padding: 1rem;
     border-bottom: 2px solid #dee1e6;
+}
+
+.topBar ul, a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    color: var(--color-main);
+    list-style-type: none;
+    text-decoration: none;
+    gap: 1rem;
+}
+
+.topBar .logo a{
+    color: white;
 }
 
 .logo{
