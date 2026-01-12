@@ -21,7 +21,34 @@
                     <span class="material-symbols-outlined">arrow_back</span>
                 </a>
             </div>
+
+            <h1 class="sectionsHeader">Settings</h1>
         </nav>
     </header>
+
+    <section class="sectionContent">
+        <div class="sessionDurationSettings">
+            <h3>Session Durations</h3>
+            <div class="slideContainer">
+                <div class="slideInfoContainer">
+                    <label for="focusSlider">Pomodoro</label>
+                    <div class="actualTimeSetting">25:00</div>
+                </div>
+
+                <input min="1" max="60" value="25" type="range" id="focusSlider" class="slider">
+            </div>
+
+            
+            <div class="slideContainer">
+                <div class="slideInfoContainer">
+                    <label for="restSlider">Break</label>
+                    <div class="actualTimeSetting">05:00</div>
+                </div>
+                <input min="1" max="15" value= "5" type="range" id="restSlider" class="slider">
+            </div>
+
+        </div>
+        <script type="module" src="./JS/Settings/mainSettings.js"></script>
+    </section>
 </body>
 </html>
