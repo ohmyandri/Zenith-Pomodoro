@@ -1,7 +1,7 @@
 const FOCUS_KEY = "focusData"
 const REST_KEY = "restData"
 
-const DEFAULT_FOCUS = { h: 0, m: 21, s: 0 };
+const DEFAULT_FOCUS = { h: 0, m: 25, s: 0 };
 const DEFAULT_REST = { h: 0, m: 5, s: 0 };
 
 export function saveFocusTime(configObject){
