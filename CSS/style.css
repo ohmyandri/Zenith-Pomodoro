@@ -5,11 +5,12 @@
 @import "./actionButtons.css";
 @import "./sessionDurationSettings.css";
 @import "./sliderStyle.css";
-
+@import "./behavior.css";
 
 :root{
     --color-main: #6AB2FB;
     --color-gray: #565d6d;
+    --color-gray-lighter: #bdc1ca;
     --default-box-shadow-light: 2px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
