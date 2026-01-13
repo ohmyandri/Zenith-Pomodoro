@@ -1,20 +1,28 @@
-import { saveFocusTime, saveRestTime, getFocusTime, getRestTime } from "../localStorage/dataStorage.js";
+import { saveFocusTime, saveRestTime, getFocusTime, getRestTime, saveSoundBehavior, saveAutoStartBehavior, getSoundBehavior, getAutoStartBehavior} from "../localStorage/dataStorage.js";
 
 const focusSlider = document.getElementById('focusSlider');
+const restSlider = document.getElementById('restSlider');
+
+const focusTimeUI = document.getElementById('focusTime');
+const restTimeUI = document.getElementById('restTime');
+
+const behaviorSoundSlider = document.getElementById('toggleSound');
+const behaviorAutoStartSlider = document.getElementById('toggleAutoStart');
+
 //Setting the value of the slider, to be the one from the data storage
 focusSlider.value = getFocusTime().m;
-
-const restSlider = document.getElementById('restSlider');
 //Setting the value of the slider, to be the one from the data storage
 restSlider.value = getRestTime().m;
-
-const focusTimeUI = document.getElementById('focusTime')
-const restTimeUI = document.getElementById('restTime')
 
 // Set initial display values
 focusTimeUI.textContent = `${String(getFocusTime().m).padStart(2, '0')}:00`;
 restTimeUI.textContent = `${String(getRestTime().m).padStart(2, '0')}:00`;
 
+//Initial States of the checkbox:
+behaviorSoundSlider.checked = getSoundBehavior();
+behaviorAutoStartSlider.checked = getAutoStartBehavior();
+
+//SLIDER FOR THE TIME
 focusSlider.addEventListener('input', (e) => {
     //We get the value:
     const sliderData = focusSlider.value;
@@ -46,3 +54,14 @@ restSlider.addEventListener('input', (e) => {
     //Changing the value:
     restTimeUI.textContent = `${String(sliderData).padStart(2, '0')}:00`;
 })
+
+//Behavior Listeners
+behaviorSoundSlider.addEventListener('change', () => {
+    const actualBoolean = behaviorSoundSlider.checked;
+    saveSoundBehavior(actualBoolean);
+});
+
+behaviorAutoStartSlider.addEventListener('change', () => {
+    const actualBoolean = behaviorAutoStartSlider.checked;
+    saveAutoStartBehavior(actualBoolean);
+});
