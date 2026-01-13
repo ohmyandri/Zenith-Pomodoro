@@ -1,6 +1,6 @@
 import {displayTime} from "./ui.js";
 import {toggle} from './main.js';    
-import {getFocusTime, getRestTime} from '../localStorage/dataStorage.js'
+import {getFocusTime, getRestTime, getAutoStartBehavior, getSoundBehavior} from '../localStorage/dataStorage.js'
 
 let timer = 0;
 let startTime = 0;
@@ -8,8 +8,10 @@ let elapsedTime = 0;
 let isRunning = false;
 
 let focusConfig = getFocusTime();
-
 let restConfig = getRestTime();
+let autoStartConfig = getAutoStartBehavior();
+let soundConfig = getSoundBehavior();
+const alarmSound = new Audio('../Assets/Sounds/alarm.mp3');
 
 let total_time = ((focusConfig.h * 3600) + (focusConfig.m * 60) + focusConfig.s) * 1000;
 
@@ -32,14 +34,22 @@ export function updateTimer() {
     elapsedTime = currentTime - startTime;
 
     if(elapsedTime >= total_time){
-        //We alert the user the focus-time has finished
-        alert("Time's done!")
+        //We check if we can trigger a sound
+        
+        if(soundConfig){
+            //Triggering the sound 
+            alarmSound.play().catch(err => console.log("Esperando interacción del usuario para audio."));
+        }
         //We send to the contrary page page:
         const toggle = document.getElementById('pomodoroToggle');
         toggle.checked = !toggle.checked;
         //We set the correct toggler:
         togglerStatus();
-        resetTimer();
+        //We check if the user wants us to start the timer:
+
+        if(autoStartConfig){
+            startTimer();
+        }
     }
 
     else{
