@@ -7,4 +7,3 @@ export function displayTime(timeToDisplay){
         timerDisplay.textContent = `${timeToDisplay.m}:${timeToDisplay.s}`
     }
 }
-

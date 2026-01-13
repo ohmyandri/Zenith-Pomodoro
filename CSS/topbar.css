@@ -1,8 +1,10 @@
 .topBar{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1rem;
     border-bottom: 2px solid #dee1e6;
+    position: relative;
 }
 
 .topBar ul, a{
@@ -18,6 +20,14 @@
 
 .topBar .logo a{
     color: white;
+}
+
+.sectionsHeader{
+    left: 50%;
+    transform: translateX(-50%);
+
+    position: absolute;
+    font-size: 18px;
 }
 
 .logo{
