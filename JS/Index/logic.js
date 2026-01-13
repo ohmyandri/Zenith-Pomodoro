@@ -1,22 +1,15 @@
 import {displayTime} from "./ui.js";
 import {toggle} from './main.js';    
+import {getFocusTime, getRestTime} from '../localStorage/dataStorage.js'
 
 let timer = 0;
 let startTime = 0;
 let elapsedTime = 0;
 let isRunning = false;
 
-let focusConfig = {
-    h: 0,
-    m: 25,
-    s: 0
-};
+let focusConfig = getFocusTime();
 
-let restConfig = {
-    h: 0,
-    m: 5,
-    s: 0
-};
+let restConfig = getRestTime();
 
 let total_time = ((focusConfig.h * 3600) + (focusConfig.m * 60) + focusConfig.s) * 1000;
 
