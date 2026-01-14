@@ -1,6 +1,6 @@
 import {displayTime} from "./ui.js";
 import {toggle} from './main.js';    
-import {getFocusTime, getRestTime, getAutoStartBehavior, getSoundBehavior} from '../localStorage/dataStorage.js'
+import {getFocusTime, getRestTime, getAutoStartBehavior, getSoundBehavior, saveSessionHistory, getSessionHistory} from '../localStorage/dataStorage.js'
 
 let timer = 0;
 let startTime = 0;
@@ -12,8 +12,9 @@ let restConfig = getRestTime();
 let autoStartConfig = getAutoStartBehavior();
 let soundConfig = getSoundBehavior();
 const alarmSound = new Audio('../Assets/Sounds/alarm.mp3');
-
 let total_time = ((focusConfig.h * 3600) + (focusConfig.m * 60) + focusConfig.s) * 1000;
+//Array of the sessions history:
+let sessionsHistory = getSessionHistory();
 
 export function setTimeConfig(h, m, s){
     total_time = ((h * 3600) + (m * 60) + s) * 1000;
@@ -35,18 +36,30 @@ export function updateTimer() {
 
     if(elapsedTime >= total_time){
         //We check if we can trigger a sound
-        
         if(soundConfig){
             //Triggering the sound 
             alarmSound.play().catch(err => console.log("Esperando interacción del usuario para audio."));
         }
-        //We send to the contrary page page:
         const toggle = document.getElementById('pomodoroToggle');
+
+        //New Implementation, we want to save, the duration of the session, the mode of the session, and the data of the day done
+        const sessionData = {
+            duration: elapsedTime,
+            date: Date.now(),
+            mode: toggle.checked //False means Focus, True means Rest
+        }
+        //Pushing data to the array:
+        sessionsHistory.push(sessionData);
+        //Sending the array to the local Storage
+        saveSessionHistory(sessionsHistory);
+
+        //We send to the contrary page page:
         toggle.checked = !toggle.checked;
+
         //We set the correct toggler:
         togglerStatus();
-        //We check if the user wants us to start the timer:
 
+        //We check if the user wants us to start the timer:
         if(autoStartConfig){
             startTimer();
         }
