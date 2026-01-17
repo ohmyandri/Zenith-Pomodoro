@@ -1,0 +1,22 @@
+.slideContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.actualTimeSetting{
+    color: var(--color-gray);
+}
+
+.slideInfoContainer{
+    /* font-family: "JetBrains Mono", monospace; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider{
+    width: 100%;
+}
