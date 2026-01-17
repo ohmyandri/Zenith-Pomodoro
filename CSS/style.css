@@ -6,6 +6,7 @@
 @import "./sessionDurationSettings.css";
 @import "./sliderStyle.css";
 @import "./behavior.css";
+@import "./totalTimeSection.css";
 
 :root{
     --color-main: #6AB2FB;
